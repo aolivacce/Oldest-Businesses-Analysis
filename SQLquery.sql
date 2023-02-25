@@ -75,6 +75,17 @@ INNER JOIN countries AS cou
 ON bus.country_code = cou.country_code
 GROUP BY cou.continent, cat.category;
 
+-- Repeat that previous query, filtering for results having a count greater than 5
+
+SELECT cou.continent, cat.category, COUNT(*) AS n
+FROM categories AS cat
+INNER JOIN businesses AS bus 
+ON cat.category_code = bus.category_code
+INNER JOIN countries AS cou
+ON bus.country_code = cou.country_code
+GROUP BY cou.continent, cat.category
+HAVING COUNT(*) > 5
+ORDER BY n DESC;
 
 
 
